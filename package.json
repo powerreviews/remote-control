@@ -1,0 +1,33 @@
+{
+  "name": "remote-control",
+  "version": "0.0.1",
+  "description": "a remote control UI for battle robots",
+  "main": "app.js",
+  "scripts": {
+    "start": "webpack-dev-server --inline"
+  },
+  "author": "PowerReviews",
+  "license": "GPL",
+  "dependencies": {
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "react-redux": "^4.0.0",
+    "reactcss": "^0.4.1",
+    "redux": "^3.0.4",
+    "redux-devtools": "^2.1.5"
+  },
+  "devDependencies": {
+    "babel": "^6.0.15",
+    "babel-core": "^6.1.2",
+    "babel-loader": "^6.0.1",
+    "babel-preset-es2015": "^6.1.2",
+    "babel-preset-react": "^6.1.2",
+    "css-loader": "^0.22.0",
+    "file-loader": "^0.8.4",
+    "node-sass": "^3.4.1",
+    "sass-loader": "^3.1.1",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.3",
+    "webpack-dev-server": "^1.12.1"
+  }
+}
