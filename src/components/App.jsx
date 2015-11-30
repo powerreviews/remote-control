@@ -6,12 +6,29 @@ import ButtonPanel from './ButtonPanel';
 import Footer from './Footer';
 
 class App extends React.Component {
+  styles() {
+    return {
+      container: {
+        margin: '10vh 0'
+      },
+      directionalController: {
+        float: 'left',
+        marginRight: 20,
+        height: '76vh',
+        padding: '2vh',
+      },
+      buttonPanel: {
+        height: '76vh',
+        padding: '2vh'
+      }
+    }
+  }
   render () {
     return (
-      <div style={{margin: '10vh 0'}}>
+      <div style={this.styles().container} >
         <Header />
-        <DirectionalController style={{float: 'left', marginRight: 20, height: '76vh', padding: '2vh', display: 'table-cell'}} />
-        <ButtonPanel buttons={'abcdefghijkl'.split('')} style={{height: '76vh', padding: '2vh'}}/>
+        <DirectionalController style={this.styles().directionalController} />
+        <ButtonPanel buttons={'abcdefghijkl'.split('')} style={this.styles().buttonPanel} />
         <Footer />
       </div>
     )

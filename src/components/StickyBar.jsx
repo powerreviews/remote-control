@@ -16,13 +16,15 @@ class StickyBar extends React.Component {
         height: '10vh',
         maxHeight: 40,
         margin: 0,
-        left: 0
+        left: 0,
+        ...this.props.style
       },
       items: {
         display: 'inline-block',
         marginRight: 20
       }
     }
+    // make the bar a top or bottom sticky bar, default to top
     styleObj.container[this.props.position.toLowerCase() || 'top'] = 0;
     return styleObj;
   }
@@ -32,7 +34,7 @@ class StickyBar extends React.Component {
   }
   render () {
     return (
-      <ul style={this.styles().container}>
+      <ul {...this.props} style={this.styles().container}>
         {this.items()}
       </ul>
     )

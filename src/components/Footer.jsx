@@ -4,6 +4,7 @@ import StickyBar from './StickyBar';
 class Footer extends React.Component {
   render () {
     return <StickyBar
+      {...this.props}
       position="bottom"
       items={['device:', this.props.device, 'token:', this.props.token]}/>;
   }

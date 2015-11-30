@@ -18,7 +18,7 @@ class Button extends React.Component {
   }
   render () {
     return (
-      <button style={this.styles()}>
+      <button {...this.props} style={this.styles()}>
         {this.props.children}
       </button>
     )

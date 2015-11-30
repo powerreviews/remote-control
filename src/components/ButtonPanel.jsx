@@ -10,12 +10,14 @@ class ButtonPanel extends React.Component {
   }
   styles()  {
     return {
-      padding: '8px 16px'
+      buttons: {
+        padding: '8px 16px'
+      }
     }
   }
   buttons() {
     if (!this.props.buttons) return '';
-    return this.props.buttons.map(button => <Button key={button} style={this.styles()}>{button}</Button>)
+    return this.props.buttons.map(button => <Button key={button} style={this.styles().buttons}>{button}</Button>)
   }
   render () {
     return (

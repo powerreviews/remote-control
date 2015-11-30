@@ -5,7 +5,7 @@ import Button from './Button';
 class DirectionalController extends React.Component {
   styles() {
     return {
-      button: {
+      buttons: {
         fontFamily: 'Arial, Helvetica Neue, Helvetica, sans-serif',
         padding: '2px 6px'
       },
@@ -18,13 +18,13 @@ class DirectionalController extends React.Component {
   render () {
     return (
       <div {...this.props} style={this.styles().container}>
-        <Button style={this.styles().button}> ▲ </Button>
+        <Button style={this.styles().buttons}> ▲ </Button>
         <div>
-          <Button style={this.styles().button}> ◀︎ </Button>
-          <Button color="#DDD" style={this.styles().button}> ✕ </Button>
-          <Button style={this.styles().button}> ▶︎ </Button>
+          <Button style={this.styles().buttons}> ◀︎ </Button>
+          <Button color="#DDD" style={this.styles().buttons}> ✕ </Button>
+          <Button style={this.styles().buttons}> ▶︎ </Button>
         </div>
-        <Button style={this.styles().button}> ▼ </Button>
+        <Button style={this.styles().buttons}> ▼ </Button>
       </div>
     )
   }
