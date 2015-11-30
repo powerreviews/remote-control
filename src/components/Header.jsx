@@ -1,9 +1,12 @@
 import React, { PropTypes } from 'react';
+import StickyBar from './StickyBar';
 
 class Header extends React.Component {
   render () {
-    return <div style={{width: '100%'}}></div>
+    return <StickyBar
+      position="top"
+      items={['status:', this.props.status]}/>;
   }
 }
 
-export default Header; 
+export default Header;
