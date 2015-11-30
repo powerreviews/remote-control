@@ -13,7 +13,8 @@ class StickyBar extends React.Component {
         width: '100%',
         backgroundColor: '#DDD',
         display: 'inline-block',
-        padding: 10,
+        height: '10vh',
+        maxHeight: 40,
         margin: 0,
         left: 0
       },
@@ -38,4 +39,4 @@ class StickyBar extends React.Component {
   }
 }
 
-export default StickyBar;
+export default Radium(StickyBar);

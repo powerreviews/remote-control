@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
+import StartButton from './StartButton';
 import Button from './Button';
 
 class ButtonPanel extends React.Component {
@@ -18,8 +19,9 @@ class ButtonPanel extends React.Component {
   }
   render () {
     return (
-      <div>
-        {this.buttons()}
+      <div {...this.props}>
+        <StartButton />
+        <div>{this.buttons()}</div>
       </div>
     )
   }
