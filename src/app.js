@@ -5,13 +5,17 @@ import './styles/base.scss';
 // redux
 import { Provider } from 'react-redux'
 import createStore from './redux/createStore';
+import DevTools from './redux/devTools';
 
 const store = createStore();
 
 render(
   (
     <Provider store={store}>
-      <App />
+      <div>
+        <App />
+        <DevTools />
+      </div>
     </Provider>
   ),
   document.getElementById('app')
