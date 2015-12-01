@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import StickyBar from './StickyBar';
-import {setToken} from '../redux/action-creators';
+import {setToken} from '../redux/actionCreators';
 import {connect} from 'react-redux';
 
 class Footer extends React.Component {
