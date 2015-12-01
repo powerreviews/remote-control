@@ -30,7 +30,7 @@ class StickyBar extends React.Component {
   }
   items() {
     if (!this.props.items) return '';
-    return this.props.items.map(item => <li key={item} style={this.styles().items}>{item}</li>);
+    return this.props.items.map((item, i) => <li key={i} style={this.styles().items}>{item}</li>);
   }
   render () {
     return (

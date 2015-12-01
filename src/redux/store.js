@@ -1,10 +1,9 @@
 'use strict';
 
 import { createStore, combineReducers } from 'redux';
-import * as reducers from './reducers';
+import tokenReducer from './tokenReducer';
 
 export default function() {
-  let reducer = combineReducers(reducers);
-  let store = createStore(reducer);
+  let store = createStore(tokenReducer);
   return store;
 }
