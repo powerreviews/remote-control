@@ -5,16 +5,26 @@ class Button extends React.Component {
   styles() {
     return {
       padding: '2px 6px',
-      border: 'solid 1px #AAA',
       borderRadius: 4,
       fontSize: '220%',
+      border: 'none',
       cursor: 'pointer',
-      backgroundColor: this.props.color || 'transparent',
+      backgroundColor: 'transparent',
       ':hover': {
-        backgroundColor: '#CCC'
+        backgroundColor: 'transparent'
+      },
+      ':active': {
+        color: 'green',
+        outline: 'none'
+      },
+      ':focus': {
+        outline: 'none'
+      },
+      '@media (min-width: 769px)': {
+        fontSize: '220%'
       },
       ...this.props.style
-    };
+    }
   }
   render () {
     return (

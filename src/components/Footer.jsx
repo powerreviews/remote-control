@@ -16,6 +16,8 @@ class Footer extends React.Component {
     return {
       clickable: {
         cursor: 'pointer',
+        padding: '10px',
+        color: 'yellow',
         ':hover': {
           backgroundColor: '#AAA'
         }
