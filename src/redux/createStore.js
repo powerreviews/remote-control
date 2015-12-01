@@ -1,21 +1,5 @@
-'use strict';
-
-import { createStore, compose, combineReducers } from 'redux';
-import * as reducers from './reducers';
-import {createDevTools, persistState} from 'redux-devtools';
-import DevTools from './devTools';
-
-const finalCreateStore = compose(
-  DevTools.instrument(),
-  persistState(
-    window.location.href.match(
-      /[?&]debug_session=([^&]+)\b/
-    )
-  )
-)(createStore);
-
-export default function() {
-  let reducerCombo = combineReducers(reducers);
-  let store = finalCreateStore(reducerCombo);
-  return store;
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./createStore.prod.js');
+} else {
+  module.exports = require('./createStore.dev.js');
 }
