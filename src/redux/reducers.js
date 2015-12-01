@@ -1,5 +1,14 @@
 'use strict';
 
-export function requestReducer(state={}, action) {
-  return state;
+export function tokenReducer(state={}, action) {
+  switch (action.type) {
+    case "SET_TOKEN":
+      return {
+        ...state,
+        token: action.data.token,
+        device: action.data.device
+      };
+    default:
+      return state;
+  };
 }

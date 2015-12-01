@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import StickyBar from './StickyBar';
-import {setToken} from '../redux/setTokenActionCreator';
+import {setToken} from '../redux/action-creators';
 import {connect} from 'react-redux';
 
 class Footer extends React.Component {
@@ -33,8 +33,8 @@ class Footer extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    token: state.token,
-    device: state.device
+    token: state.tokenReducer.token,
+    device: state.tokenReducer.device
   };
 }
 

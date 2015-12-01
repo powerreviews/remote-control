@@ -1,8 +1,11 @@
 'use strict';
 
-export function sendRequest() {
+export function setToken(device, token) {
   return {
-    type: 'REQUEST',
-    data: ''
+    type: 'SET_TOKEN',
+    data: {
+      device: device,
+      token: token
+    }
   };
 }
