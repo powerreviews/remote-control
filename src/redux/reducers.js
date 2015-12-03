@@ -19,3 +19,15 @@ export function tokenReducer(state=initialTokenState, action) {
       return state;
   };
 }
+
+export function requestReducer(state={}, action) {
+  switch (action.type) {
+    case 'MAKE_REQUEST':
+      return {
+        ...state,
+        requestName: action.requestName.toLowerCase()
+      }
+    default:
+      return state;
+  };
+}
