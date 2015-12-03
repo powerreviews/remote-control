@@ -49,8 +49,8 @@ class SensorButtons extends React.Component {
     return (
       <div>
         <Button requestName="read1" style={this.styles().sensor1}>read 1</Button>
-        <Button requestName="read2" style={this.styles().sensor2}>read 2</Button>
-        <Button requestName="echo1" style={this.styles().sensor3}>echo 1</Button>
+        <Button requestName="echo1" style={this.styles().sensor2}>echo 1</Button>
+        <Button requestName="read2" style={this.styles().sensor3}>read 2</Button>
         <Button requestName="echo2" style={this.styles().sensor4}>echo 2</Button>
       </div>
     )
