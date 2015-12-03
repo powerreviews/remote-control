@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import Radium from 'radium'
 // flux
-import {sendRequest} from '../redux/actionCreators'
+import { sendRequest } from '../redux/actionCreators'
 import { connect } from 'react-redux'
 
 class Button extends React.Component {
@@ -35,7 +35,7 @@ class Button extends React.Component {
   }
   _onClick() {
     let requestName = this.props.requestName || this.props.children;
-    this.props.dispatch(sendRequest(requestName))
+    this.props.dispatch(sendRequest(requestName, this.props.params));
   }
   render () {
     return (
@@ -47,7 +47,12 @@ class Button extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return {}
+  return {
+    params: {
+      token: state.tokenReducer.token,
+      device: state.tokenReducer.device
+    }
+  };
 }
 
 export default connect(mapStateToProps)(Button);
