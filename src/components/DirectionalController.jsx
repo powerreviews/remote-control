@@ -38,15 +38,15 @@ class DirectionalController extends React.Component {
       <div {...this.props} style={{width: 'auto', marginBottom: '15px', position: 'relative'}}>
         <div style={this.styles().container}>
           <SensorButtons />
-          <Button style={this.styles().buttons}><span>▲</span></Button>
+          <Button requestName="up" style={this.styles().buttons}><span>▲</span></Button>
           <div>
-            <Button style={this.styles().buttons}> ◀︎ </Button>
+            <Button requestName="right" style={this.styles().buttons}> ◀︎ </Button>
             <div style={this.styles().closeButtonContainer}>
-              <Button style={this.styles().buttons}><span style={{fontSize: '80%',position: 'relative', zIndex: '1', color: 'white', ':active': {color: 'red'} }}>╳</span></Button>
+              <Button requestName="x" style={this.styles().buttons}><span style={{fontSize: '80%',position: 'relative', zIndex: '1', color: 'white', ':active': {color: 'red'} }}>╳</span></Button>
             </div>
-            <Button style={this.styles().buttons}> ▶︎ </Button>
+            <Button requestName="left" style={this.styles().buttons}> ▶︎ </Button>
           </div>
-          <Button style={this.styles().buttons}> ▼ </Button>
+          <Button requestName="down" style={this.styles().buttons}> ▼ </Button>
         </div>
       </div>
     )

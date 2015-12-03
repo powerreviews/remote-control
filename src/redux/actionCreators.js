@@ -10,9 +10,10 @@ export function setToken(device, token) {
   };
 }
 
-export function sendRequest(requestName) {
+export function sendRequest(requestName, params) {
   return {
     type: 'SEND_REQUEST',
-    requestName
+    requestName,
+    params
   }
 }

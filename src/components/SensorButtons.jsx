@@ -48,10 +48,10 @@ class SensorButtons extends React.Component {
     // <span style={{zIndex: '-1', position: 'absolute', left: '-22px', fontSize: '200%', top: '-22px'}}>⚫</span>
     return (
       <div>
-        <button style={this.styles().sensor1}>One</button>
-        <button style={this.styles().sensor2}>Two</button>
-        <button style={this.styles().sensor3}>Three</button>
-        <button style={this.styles().sensor4}>Four</button>
+        <Button requestName="read1" style={this.styles().sensor1}>read 1</Button>
+        <Button requestName="echo1" style={this.styles().sensor2}>echo 1</Button>
+        <Button requestName="read2" style={this.styles().sensor3}>read 2</Button>
+        <Button requestName="echo2" style={this.styles().sensor4}>echo 2</Button>
       </div>
     )
   }

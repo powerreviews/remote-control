@@ -49,7 +49,6 @@ class Footer extends React.Component {
     }
     return <StickyBar
       {...this.props}
-      onDoubleClick={this.toggleEditable}
       position="bottom"
       items={items} />;
   }

@@ -1,4 +1,5 @@
 'use strict';
+import SuperAgent from 'superagent';
 
 let initialTokenState = {
   token: localStorage.getItem('token'),
@@ -7,7 +8,7 @@ let initialTokenState = {
 
 export function tokenReducer(state=initialTokenState, action) {
   switch (action.type) {
-    case "SET_TOKEN":
+    case 'SET_TOKEN':
       localStorage.setItem('token', action.data.token);
       localStorage.setItem('device', action.data.device);
       return {
@@ -22,10 +23,19 @@ export function tokenReducer(state=initialTokenState, action) {
 
 export function requestReducer(state={}, action) {
   switch (action.type) {
-    case 'MAKE_REQUEST':
+    case 'SEND_REQUEST':
+      let endpoint = `https://api.particle.io/v1/devices/${action.params.device}/${action.requestName}`.toLowerCase();
+      SuperAgent
+        .post(endpoint)
+        .type('form')
+        .send({access_token: action.params.token})
+        .end((err, res) => {
+          alert(JSON.stringify(res.body));
+        });
       return {
         ...state,
-        requestName: action.requestName.toLowerCase()
+        requestName: action.requestName.toLowerCase(),
+        endpoint
       }
     default:
       return state;
