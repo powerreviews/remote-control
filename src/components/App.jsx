@@ -9,7 +9,7 @@ class App extends React.Component {
   styles() {
     return {
       container: {
-        margin: '10vh 0'
+        margin: '13vh 0'
       },
       directionalController: {
         marginRight: 20,

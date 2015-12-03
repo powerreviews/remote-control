@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
 import Button from './Button';
+import SensorButtons from './SensorButtons';
 
 class DirectionalController extends React.Component {
   styles() {
@@ -34,8 +35,9 @@ class DirectionalController extends React.Component {
   render () {
     // <span style={{zIndex: '-1', position: 'absolute', left: '-22px', fontSize: '200%', top: '-22px'}}>⚫</span>
     return (
-      <div {...this.props} style={{width: 'auto', marginBottom: '15px'}}>
+      <div {...this.props} style={{width: 'auto', marginBottom: '15px', position: 'relative'}}>
         <div style={this.styles().container}>
+          <SensorButtons />
           <Button style={this.styles().buttons}><span>▲</span></Button>
           <div>
             <Button style={this.styles().buttons}> ◀︎ </Button>
