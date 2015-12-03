@@ -1,10 +1,5 @@
-'use strict';
-
-import { createStore, combineReducers } from 'redux';
-import * as reducers from './reducers';
-
-export default function() {
-  let reducerCombo = combineReducers(reducers);
-  let store = createStore(reducerCombo);
-  return store;
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./createStore.prod.js');
+} else {
+  module.exports = require('./createStore.dev.js');
 }

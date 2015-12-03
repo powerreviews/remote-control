@@ -4,7 +4,9 @@
   "description": "a remote control UI for battle robots",
   "main": "app.js",
   "scripts": {
-    "start": "webpack-dev-server --inline"
+    "start": "webpack-dev-server --inline",
+    "build": "webpack --config webpack.config.prod.js",
+    "gh-pages": "webpack --config webpack.config.prod.js && mv build/* ./"
   },
   "author": "PowerReviews",
   "license": "GPL",
@@ -13,8 +15,7 @@
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-redux": "^4.0.0",
-    "redux": "^3.0.4",
-    "redux-devtools": "^2.1.5"
+    "redux": "^3.0.4"
   },
   "devDependencies": {
     "babel": "^6.0.15",
@@ -26,6 +27,9 @@
     "css-loader": "^0.22.0",
     "file-loader": "^0.8.4",
     "node-sass": "^3.4.1",
+    "redux-devtools": "^3.0.0-beta-3",
+    "redux-devtools-dock-monitor": "^1.0.0-beta-3",
+    "redux-devtools-log-monitor": "^1.0.0-beta-3",
     "sass-loader": "^3.1.1",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.3",
