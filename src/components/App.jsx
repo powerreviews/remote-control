@@ -9,13 +9,10 @@ class App extends React.Component {
   styles() {
     return {
       container: {
-        margin: '10vh 0'
+        margin: '13vh 0'
       },
       directionalController: {
-        float: 'left',
         marginRight: 20,
-        height: '76vh',
-        padding: '2vh',
       },
       buttonPanel: {
         height: '76vh',
@@ -25,10 +22,12 @@ class App extends React.Component {
   }
   render () {
     return (
-      <div style={this.styles().container} >
+      <div>
         <Header />
-        <DirectionalController style={this.styles().directionalController} />
-        <ButtonPanel buttons={'abcdefghijkl'.split('')} style={this.styles().buttonPanel} />
+        <main style={this.styles().container}>
+          <DirectionalController style={this.styles().directionalController} />
+          <ButtonPanel buttons={'abcdefghijkl'.split('')} style={this.styles().buttonPanel} />
+        </main>
         <Footer />
       </div>
     )

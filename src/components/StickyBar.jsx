@@ -11,10 +11,8 @@ class StickyBar extends React.Component {
       container: {
         position: 'fixed',
         width: '100%',
-        backgroundColor: '#DDD',
-        display: 'inline-block',
-        height: '10vh',
-        maxHeight: 40,
+        backgroundColor: '#222',
+        color: '#fff',
         margin: 0,
         left: 0,
         ...this.props.style
@@ -34,9 +32,11 @@ class StickyBar extends React.Component {
   }
   render () {
     return (
-      <ul {...this.props} style={this.styles().container}>
-        {this.items()}
-      </ul>
+      <div style={this.styles().container}>
+        <ul {...this.props}>
+          {this.items()}
+        </ul>
+      </div>
     )
   }
 }

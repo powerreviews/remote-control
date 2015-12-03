@@ -11,7 +11,12 @@ class ButtonPanel extends React.Component {
   styles()  {
     return {
       buttons: {
-        padding: '8px 16px'
+        padding: '8px 16px',
+        color: 'white'
+      },
+      container: {
+        textAlign: 'center',
+        padding: '20px'
       }
     }
   }
@@ -21,9 +26,9 @@ class ButtonPanel extends React.Component {
   }
   render () {
     return (
-      <div {...this.props}>
+      <div {...this.props} style={this.styles().container}>
+        <div style={{marginBottom: '20px'}}>{this.buttons()}</div>
         <StartButton />
-        <div>{this.buttons()}</div>
       </div>
     )
   }
