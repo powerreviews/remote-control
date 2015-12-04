@@ -39,7 +39,7 @@ class Button extends React.Component {
   }
   render () {
     return (
-      <button onClick={this._onClick} {...this.props} style={this.styles()}>
+      <button onClick={this._onClick} {...this.props} style={this.styles()} disabled={this.props.requestInProgress}>
         {this.props.children}
       </button>
     )
@@ -51,7 +51,8 @@ function mapStateToProps(state) {
     params: {
       token: state.tokenReducer.token,
       device: state.tokenReducer.device
-    }
+    },
+    requestInProgress: state.requestReducer.inProgress
   };
 }
 
