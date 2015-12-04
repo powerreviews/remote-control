@@ -1,6 +1,7 @@
 'use strict';
 
-import { createStore, compose, combineReducers } from 'redux';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import thunk from 'redux-thunk';
 import * as reducers from './reducers';
 import {createDevTools, persistState} from 'redux-devtools';
 import DevTools from './DevTools';
@@ -16,6 +17,7 @@ const finalCreateStore = compose(
 
 export default function() {
   let reducerCombo = combineReducers(reducers);
-  let store = finalCreateStore(reducerCombo);
+  let createStoreWithMiddleware = applyMiddleware(thunk)(finalCreateStore);
+  let store = createStoreWithMiddleware(reducerCombo);
   return store;
 }
