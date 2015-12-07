@@ -9,10 +9,16 @@ class App extends React.Component {
   styles() {
     return {
       container: {
-        margin: '13vh 0'
+        margin: '75px auto',
+        width: '1000px',
+        padding: '20px',
+        boxSizing: 'border-box',
+        '@media (max-width: 1090px)': {
+          width: 'auto'
+        }
       },
       directionalController: {
-        marginRight: 20,
+        marginRight: '20px',
       },
       buttonPanel: {
         height: '76vh',

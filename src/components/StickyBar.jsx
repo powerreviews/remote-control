@@ -15,6 +15,7 @@ class StickyBar extends React.Component {
         color: '#fff',
         margin: 0,
         left: 0,
+        zIndex: '1000',
         ...this.props.style
       },
       items: {

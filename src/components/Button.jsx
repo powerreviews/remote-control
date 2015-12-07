@@ -27,7 +27,7 @@ class Button extends React.Component {
       ':focus': {
         outline: 'none'
       },
-      '@media (min-width: 769px)': {
+      '@media (minWidth: 769px)': {
         fontSize: '220%'
       },
       ...this.props.style

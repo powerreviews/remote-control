@@ -24,7 +24,7 @@ class DirectionalController extends React.Component {
         backgroundColor: 'white',
         borderRadius: '100px',
         position: 'relative',
-        '@media (max-width: 768px)': {
+        '@media (max-width: 1090px)': {
           width: '203px',
           float: 'none',
           margin: 'auto'
