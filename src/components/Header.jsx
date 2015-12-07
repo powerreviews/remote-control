@@ -3,11 +3,18 @@ import StickyBar from './StickyBar';
 import {connect} from 'react-redux';
 
 class Header extends React.Component {
+  styles() {
+    return {
+      headline:  {
+        color: 'yellow'
+      }
+    }
+  }
   render () {
     let items = [
-      'request:',
+      <span style={this.styles().headline}>request:</span>,
       this.props.requestName,
-      'response:',
+      <span style={this.styles().headline}>request:</span>,
       this.props.response
     ]
     if (this.props.requestInProgress) {
@@ -16,6 +23,7 @@ class Header extends React.Component {
     return <StickyBar
       {...this.props}
       position="top"
+      type="header"
       items={items} />;
   }
 }

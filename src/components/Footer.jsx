@@ -48,9 +48,10 @@ class Footer extends React.Component {
       items.push(<button style={this.styles().clickable} onClick={this.toggleEditable}>Save</button>)
     }
     return <StickyBar
-      {...this.props}
-      position="bottom"
-      items={items} />;
+        {...this.props}
+        position="bottom"
+        type="footer"
+        items={items} />;
   }
 }
 

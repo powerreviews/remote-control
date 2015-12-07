@@ -7,15 +7,17 @@ class Counter extends React.Component {
   styles() {
     return {
       container: {
-        textAlign: 'right',
-        color: '#fff'
+        textAlign: 'left',
+        color: '#fff',
+        width: '100%',
+        padding: '0 25px 0'
       }
     }
   }
   render () {
     return (
       <div style={this.styles().container}>
-        <h2 dangerouslySetInnerHTML={{__html: this.props.requestCount}}></h2>
+        <h2 dangerouslySetInnerHTML={{__html: `Requests made: ${this.props.requestCount}`}}></h2>
       </div>
     )
   }
