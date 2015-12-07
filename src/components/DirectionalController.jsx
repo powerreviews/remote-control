@@ -20,15 +20,14 @@ class DirectionalController extends React.Component {
         textAlign: 'center',
         width: '203px',
         margin: 'auto',
-        float: 'left',
         backgroundColor: 'white',
         borderRadius: '100px',
         position: 'relative',
-        '@media (max-width: 1090px)': {
-          width: '203px',
-          float: 'none',
-          margin: 'auto'
-        }
+        // '@media (min-width: 1090px)': {
+        //   fontSize: '290%',
+        //   width: '400px',
+        //   borderRadius: '230px'
+        // }
       }
     }
   }

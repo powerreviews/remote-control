@@ -50,3 +50,13 @@ export function responseReducer(state={}, action) {
       return state;
   }
 }
+
+export function requestCountReducer(state = 0, action) {
+  switch (action.type) {
+    case 'SEND_REQUEST':
+      if (action.requestName.toString() === 'Start') return state
+  		return state + 1;
+  	default:
+  		return state;
+  }
+}

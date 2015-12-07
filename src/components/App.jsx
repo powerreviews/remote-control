@@ -4,6 +4,7 @@ import Header from './Header';
 import DirectionalController from './DirectionalController';
 import ButtonPanel from './ButtonPanel';
 import Footer from './Footer';
+import Counter from './Counter';
 
 class App extends React.Component {
   styles() {
@@ -21,8 +22,8 @@ class App extends React.Component {
         marginRight: '20px',
       },
       buttonPanel: {
-        height: '76vh',
-        padding: '2vh'
+        // height: '76vh',
+        // padding: '2vh'
       }
     }
   }
@@ -33,6 +34,7 @@ class App extends React.Component {
         <main style={this.styles().container}>
           <DirectionalController style={this.styles().directionalController} />
           <ButtonPanel buttons={'abcdefghijkl'.split('')} style={this.styles().buttonPanel} />
+          <Counter />
         </main>
         <Footer />
       </div>
