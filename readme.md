@@ -1,7 +1,7 @@
 # remote-control
 
 to preview this project, check out the ghpages branch:
- * [jnmandal.github.io/remote-control](http://jnmandal.github.io/remote-control)
+ * [powerreviews.github.io/remote-control](http://powerreviews.github.io/remote-control)
 
 ## run local
 running this locally requires:
