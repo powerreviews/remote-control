@@ -7,40 +7,39 @@ class SensorButtons extends React.Component {
     let styleObj = {
       button: {
         position: 'absolute',
-        padding: '6px 14px',
+        padding: '8px 8px',
         cursor: 'pointer',
         background: 'transparent',
-        border: 'none',
+        border: 'solid 1px white',
         fontSize: '14px',
-        // '@media (maxWidth: 768px)': {
-        //   width: '100%',
-        //   position: 'relative'
-        // }
+        ':hover': {
+          backgroundColor: 'white'
+        }
       }
     }
     styleObj.sensor1 = {
-      color: 'red',
+      color: '#E61C05',
       left: '-75px',
       top: '50%',
       // border: '1px solid',
       ...styleObj.button
     },
     styleObj.sensor2 = {
-      color: 'lightblue',
+      color: '#0A6EF0',
       // border: '1px solid',
       left: '-30px',
       top: '-20px',
       ...styleObj.button
     },
     styleObj.sensor3 = {
-      color: 'green',
+      color: '#0F8755',
       // border: '1px solid',
       right: '-35px',
       top: '-20px',
       ...styleObj.button
     },
     styleObj.sensor4 = {
-      color: 'yellow',
+      color: '#91720A',
       right: '-75px',
       top: '50%',
       // border: '1px solid',
