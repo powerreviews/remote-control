@@ -18,7 +18,7 @@ class DirectionalController extends React.Component {
       },
       container: {
         textAlign: 'center',
-        width: '203px',
+        width: '210px',
         margin: 'auto',
         backgroundColor: 'white',
         borderRadius: '100px',
