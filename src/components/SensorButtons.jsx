@@ -21,7 +21,7 @@ class SensorButtons extends React.Component {
     styleObj.sensor1 = {
       color: 'red',
       left: '-75px',
-      top: '50%',
+      top: '25%',
       // border: '1px solid',
       ...styleObj.button
     },
@@ -42,7 +42,7 @@ class SensorButtons extends React.Component {
     styleObj.sensor4 = {
       color: 'yellow',
       right: '-75px',
-      top: '50%',
+      top: '25%',
       // border: '1px solid',
       ...styleObj.button
     }
