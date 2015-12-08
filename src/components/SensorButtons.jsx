@@ -21,7 +21,7 @@ class SensorButtons extends React.Component {
     styleObj.sensor1 = {
       color: 'red',
       left: '-75px',
-      top: '50%',
+      top: '25%',
       // border: '1px solid',
       ...styleObj.button
     },
@@ -42,7 +42,14 @@ class SensorButtons extends React.Component {
     styleObj.sensor4 = {
       color: 'yellow',
       right: '-75px',
-      top: '50%',
+      top: '25%',
+      // border: '1px solid',
+      ...styleObj.button
+    }
+    styleObj.sensor5 = {
+      color: 'pink',
+      left: 65,
+      top: '-50px',
       // border: '1px solid',
       ...styleObj.button
     }
@@ -54,6 +61,7 @@ class SensorButtons extends React.Component {
       <div>
         <Button requestName="read1" style={this.styles().sensor1}>read 1</Button>
         <Button requestName="echo1" style={this.styles().sensor2}>echo 1</Button>
+        <Button style={this.styles().sensor5}>heading</Button>
         <Button requestName="echo2" style={this.styles().sensor3}>echo 2</Button>
         <Button requestName="read2" style={this.styles().sensor4}>read 2</Button>
       </div>
