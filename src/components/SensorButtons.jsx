@@ -10,7 +10,6 @@ class SensorButtons extends React.Component {
         padding: '8px 8px',
         cursor: 'pointer',
         background: 'transparent',
-        border: 'solid 1px white',
         fontSize: '14px',
         ':hover': {
           backgroundColor: 'white'
@@ -21,19 +20,19 @@ class SensorButtons extends React.Component {
       color: '#E61C05',
       left: '-75px',
       top: '25%',
-      // border: '1px solid',
+      border: '1px solid',
       ...styleObj.button
     },
     styleObj.sensor2 = {
       color: '#0A6EF0',
-      // border: '1px solid',
+      border: '1px solid',
       left: '-30px',
       top: '-20px',
       ...styleObj.button
     },
     styleObj.sensor3 = {
       color: '#0F8755',
-      // border: '1px solid',
+      border: '1px solid',
       right: '-35px',
       top: '-20px',
       ...styleObj.button
@@ -42,14 +41,14 @@ class SensorButtons extends React.Component {
       color: '#91720A',
       right: '-75px',
       top: '25%',
-      // border: '1px solid',
+      border: '1px solid',
       ...styleObj.button
     }
     styleObj.sensor5 = {
       color: 'pink',
       left: 65,
       top: '-50px',
-      // border: '1px solid',
+      border: '1px solid',
       ...styleObj.button
     }
     return styleObj

@@ -8,7 +8,8 @@ class DirectionalController extends React.Component {
     return {
       buttons: {
         fontFamily: 'Arial, Helvetica Neue, Helvetica, sans-serif',
-        padding: '10px 14px'
+        padding: '10px 14px',
+        boxSizing: 'border-box'
       },
       closeButtonContainer: {
         display: 'inline-block',
@@ -18,7 +19,7 @@ class DirectionalController extends React.Component {
       },
       container: {
         textAlign: 'center',
-        width: '210px',
+        width: '205px',
         margin: 'auto',
         backgroundColor: 'white',
         borderRadius: '100px',
