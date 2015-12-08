@@ -51,12 +51,15 @@ export function responseReducer(state={}, action) {
   }
 }
 
-export function requestCountReducer(state = 0, action) {
+let requestCountInitialState = parseInt(localStorage.getItem('requestCount')) || 0;
+
+export function requestCountReducer(state = requestCountInitialState, action) {
   switch (action.type) {
     case 'SEND_REQUEST':
       if (action.requestName.toString() === 'Start') return state
   		return state + 1;
   	default:
-  		return state;
+      localStorage.setItem('requestCount', state)
+      return state;
   }
 }
