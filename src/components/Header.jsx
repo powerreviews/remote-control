@@ -14,7 +14,7 @@ class Header extends React.Component {
     let items = [
       <span style={this.styles().headline}>request:</span>,
       this.props.requestName,
-      <span style={this.styles().headline}>request:</span>,
+      <span style={this.styles().headline}>response:</span>,
       this.props.response
     ]
     if (this.props.requestInProgress) {

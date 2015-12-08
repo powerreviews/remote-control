@@ -11,8 +11,15 @@ class ButtonPanel extends React.Component {
   styles()  {
     return {
       buttons: {
-        padding: '8px 16px',
-        color: 'white'
+        width: 50,
+        height: 50,
+        border: 'solid 1px white',
+        color: 'white',
+        margin: 3,
+        ':hover': {
+          backgroundColor: 'white',
+          color: 'black'
+        }
       },
       container: {
         textAlign: 'center',

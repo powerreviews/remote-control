@@ -56,4 +56,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Button);
+export default connect(mapStateToProps)(Radium(Button));
