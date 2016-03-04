@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "webpack-dev-server --inline",
-    "build": "webpack --config webpack.config.prod.js",
-    "gh-pages": "webpack --config webpack.config.prod.js && mv build/* ./",
+    "build": "webpack",
+    "gh-pages": "webpack && mv build/* ./",
     "gh-pages-auto": "git branch -D gh-pages && git checkout -b gh-pages && npm run gh-pages && git add index.html && git add app.js && git commit -m \"gh-page autobuild\" && git push origin gh-pages --force"
 
   },
@@ -31,9 +31,6 @@
     "css-loader": "^0.22.0",
     "file-loader": "^0.8.4",
     "node-sass": "^3.4.1",
-    "redux-devtools": "^3.0.0-beta-3",
-    "redux-devtools-dock-monitor": "^1.0.0-beta-3",
-    "redux-devtools-log-monitor": "^1.0.0-beta-3",
     "sass-loader": "^3.1.1",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.3",

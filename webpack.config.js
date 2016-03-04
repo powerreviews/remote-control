@@ -13,9 +13,6 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
-  define: {
-    'process.env.NODE_ENV': '\'development\''
-  },
   module: {
     loaders: [
       {
