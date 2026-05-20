@@ -1,42 +1,39 @@
 # remote-control — RepoDocs
-_Generated on 2026-05-11_
+_Generated on 2026-05-11 · Consolidated on 2026-05-19 against commit 000a65c_
 
 ## Summary
 
 ### Overview
-`remote-control` is a small React/Redux single-page web app that acts as a remote control UI for a battle-robot built on a Particle.io (formerly Spark Core) Photon microcontroller. Buttons in the UI map to named Particle cloud functions (e.g. `up`, `down`, `left`, `right`, `read1`, `echo1`, `start`) which are POSTed to `api.particle.io`, where the firmware in `robotCPP/` (Arduino-style `.ino` sketches) executes the corresponding hardware action. The repo appears to be an internal/hobby project (the `readme` and gh-pages target `powerreviews.github.io/remote-control`); there is no indication it integrates with any production PowerReviews/Syndigo system.
+`remote-control` is an outlier hobby/experiment repo: a React+Redux SPA hosted on GitHub Pages that drives a Particle.io Photon-based battle robot (firmware in `robotCPP/`) by POSTing to named Particle cloud functions. It has no relationship to any PowerReviews/Syndigo production system, no org-internal callers, and has been effectively dormant since 2016 — the only post-2016 change was bolting on the org-standard TruffleHog secrets-scan workflow in 2020 (`f79a2b1`, `4009845`).
 
 ### Tech Stack
 | Category | Technology | Version |
 |----------|-----------|---------|
 | Language | JavaScript (ES2015 + stage-0 + JSX) | — |
 | Language | C/C++ (Particle/Arduino firmware) | — |
-| Framework | React | ^0.14.3 |
-| Framework | Redux | ^3.0.4 |
-| Framework | react-redux | ^4.0.0 |
-| Framework | redux-thunk | ^1.0.0 |
-| Framework | Radium (CSS-in-JS) | ^0.15.3 |
-| Framework | SuperAgent (HTTP client) | ^1.4.0 |
-| Build Tool | Webpack | ^1.12.3 |
-| Build Tool | Babel | ^6.0.15 (presets: es2015, react, stage-0) |
-| Build Tool | node-sass / sass-loader | ^3.4.1 / ^3.1.1 |
-| Build Tool | Node | tested on v5.0.0 (per readme) |
-| Database | _Not determinable from code._ (uses browser `localStorage`) | — |
-| CI/CD | GitHub Actions (secrets scanning only) | — |
-| Cloud/Infra | GitHub Pages (deployed via `gh-pages` branch) | — |
-| Cloud/Infra | Particle.io device cloud (target of API calls) | v1 |
+| Framework | React / react-redux / Redux / redux-thunk | 0.14 / 4.x / 3.x / 1.x |
+| Framework | Radium (CSS-in-JS) | 0.15.x |
+| Framework | SuperAgent (HTTP client) | 1.x |
+| Build Tool | Webpack 1 + Babel 6 + node-sass 3 | 1.12 / 6.0 / 3.4 |
+| CI/CD | GitHub Actions (TruffleHog secrets scan only) | — |
+| Cloud/Infra | GitHub Pages (gh-pages branch deploy) | — |
+| Cloud/Infra | Particle.io Device Cloud (`api.particle.io/v1`) | v1 |
 
 ### Consumers
 | Consumer | Type | How They Use It |
-|----------|------|----------------|
-| Browser end users | External (humans) | Open the GitHub Pages site (`powerreviews.github.io/remote-control`) and drive the robot from a phone/desktop browser |
-| Particle Photon device(s) | External hardware | Receive HTTP-triggered function calls (`up`, `down`, `left`, `right`, `x`, `start`, `read1`, `read2`, `echo1`, `echo2`) registered via `Particle.function(...)` in `robotCPP/*.ino` |
-| GitHub Pages | External (hosting) | Serves the built `index.html` + `app.js` bundle (via `npm run gh-pages` / `gh-pages-auto`) |
-| GitHub Actions | External (CI) | Runs the scheduled TruffleHog secrets scan defined in `.github/workflows/secrets-scan.yml` |
-| Slack (`#github-token-scan`) | External | Receives failure notifications from the secrets-scan workflow via `rtCamp/action-slack-notify` |
+|----------|------|-----------------|
+| Browser end users | External (humans) | Open `powerreviews.github.io/remote-control` and drive the robot |
+| Particle Photon device(s) | External hardware | Execute UI-triggered cloud functions (`up`/`down`/`left`/`right`/`x`/`start`/`read1`/`read2`/`echo1`/`echo2`) |
+| GitHub Pages | Cloud Service | Static hosting of the compiled bundle |
+| GitHub Actions | CI System | Runs the cron TruffleHog scan |
+| Slack `#github-token-scan` | External | Receives failure notifications from the scan workflow |
 
 ### Dependencies on Org Repos
-_None — no org repos are referenced via imports, package dependencies, submodules, or CI configuration._
+None — no imports, package deps, submodules, CI references, or shared infrastructure tie this repo to any other org repo. It is one of the few JavaScript repos in the org with a completely empty entry in the org-wide dependency map.
+
+| Repo | Reason |
+|------|--------|
+| _(none)_ | — |
 
 ### External Integrations
 | Service | Purpose | Integration Type |
@@ -54,18 +51,34 @@ _None — no org repos are referenced via imports, package dependencies, submodu
 ### Upgrade Alerts
 | Dependency | Current Version | Issue | Severity |
 |-----------|----------------|-------|----------|
-| React | ^0.14.3 | EOL — last 0.14.x release was in 2016; current major is 19.x. Many known CVEs are patched only in 16+ | Severe |
-| react-dom | ^0.14.3 | Same EOL situation as React 0.14 | Severe |
-| Redux | ^3.0.4 | Major-version EOL; current line is 5.x | Severe |
-| redux-thunk | ^1.0.0 | EOL major; current line is 3.x | Severe |
-| react-redux | ^4.0.0 | EOL major; current line is 9.x | Severe |
-| Webpack | ^1.12.3 | EOL — webpack 1 unsupported since 2017; current is 5.x | Severe |
-| Babel | ^6.0.15 (core + es2015/react/stage-0 presets) | EOL — Babel 6 unmaintained since Babel 7 (Aug 2018); `stage-0` preset removed | Severe |
-| node-sass | ^3.4.1 | Deprecated by maintainers in favor of `sass` (Dart Sass); 3.x line unsupported | Severe |
-| webpack-dev-server | ^1.12.1 | EOL — current is 5.x; relies on EOL webpack 1 | Severe |
-| Node.js | v5.0.0 (per `readme.md`) | EOL since June 2016 | Severe |
-| SuperAgent | ^1.4.0 | EOL major; older 1.x versions have known prototype-pollution / regex DoS advisories in transitive deps | Severe |
-| Radium | ^0.15.3 | Project officially placed in maintenance mode by FormidableLabs (2017) | Severe |
+| React / react-dom | ^0.14.3 | EOL since 2016; current 19.x; many CVEs only patched in 16+ | Severe |
+| Redux | ^3.0.4 | EOL major (current 5.x) | Severe |
+| react-redux | ^4.0.0 | EOL major (current 9.x) | Severe |
+| redux-thunk | ^1.0.0 | EOL major (current 3.x) | Severe |
+| Webpack / webpack-dev-server | ^1.12.x | EOL since 2017; current 5.x | Severe |
+| Babel (core + es2015/react/stage-0 presets) | ^6.0.15 | EOL; `stage-0` preset removed in Babel 7 | Severe |
+| node-sass | ^3.4.1 | Deprecated in favor of Dart `sass`; 3.x unsupported | Severe |
+| Node.js (per readme) | v5.0.0 | EOL since June 2016 | Severe |
+| SuperAgent | ^1.4.0 | EOL major; older 1.x carries transitive prototype-pollution / regex DoS advisories | Severe |
+| Radium | ^0.15.3 | In maintenance mode since 2017 (FormidableLabs) | Severe |
+
+No CVEs are currently flagged at the repo level, but every framework dependency is multiple majors past EOL — practically, this app cannot be built or audited safely against modern tooling without a wholesale rewrite. Mitigated only by the fact that nothing in production depends on it.
+
+### Coupling Profile
+| Dependency | Protocol | Frequency Pattern | Failure Mode |
+|-----------|----------|-------------------|--------------|
+| Particle.io Device Cloud (`api.particle.io/v1/devices/{id}/{fn}`) | sync HTTP (form-encoded POST via SuperAgent) | per-request (one POST per UI click) | hard — no retry, no circuit breaker; failure surfaces in `responseReducer` and re-enables buttons |
+| Particle Photon firmware (`robotCPP/*.ino`) | indirect via Particle Cloud RPC | per-request | hard — caller observes Particle Cloud's error response |
+| Browser `localStorage` (`token`, `device`, `requestCount`) | shared local store | per-action (writes on `SET_TOKEN`, on every non-`Start` response) | soft — lost storage just resets device/token; user re-enters |
+| GitHub Pages (`gh-pages` branch) | file/object store (manual `npm run gh-pages-auto`) | manual on demand | soft — stale site until next push |
+| TruffleHog GitHub Action | scheduled CI job | scheduled (cron `0 14 * * 1-5`) | soft — failure pings Slack, does not block anything |
+| Slack `#github-token-scan` webhook | sync HTTP webhook (rtCamp/action-slack-notify) | event-triggered (on scan failure only) | soft — notification only |
+
+### Architectural Notes
+- **Shared infrastructure**: None. This is the only repo in the org that integrates with Particle.io (confirmed in the org External Dependency Footprint: `Particle.io` row lists `remote-control` exclusively). It uses no shared Postgres, no shared SNS/SQS topics, no shared Redis, no shared S3 buckets, no shared auth, and no shared deploy tooling (no `pwr-service-deploy-orb`, no `pwr-docker-service`, no Jenkins shared library, no Terraform modules).
+- **Bounded-context overlaps**: None. The repo's domain — robot motor/sensor control — has no overlap with any UGC, reviews, syndication, moderation, sampling, analytics, or merchant-config concept defined elsewhere in the org. Even the `Counter`/`Header`/`Footer`/`Button` React components are isolated; they do not pull from `pwr-js`, `pwr-js-utils`, `design-system`, `react-jsonld`, `ui-library`, or any other shared frontend package.
+- **Architectural evolution**: The codebase has been frozen since 2016-03-04 (`202068f`, "Modify project to use redux devtools chrome extension"). The only post-2016 commits (`f79a2b1`, `4009845`, both 2020-07) added the org-wide TruffleHog + Slack secrets-scan workflow — a pattern this repo shares with ~75 other small/legacy/placeholder repos in the org per the External Dependency Footprint. In other words, the only "evolution" visible here is being swept up in an org-wide security-hygiene pass, not any actual development.
+- **Outlier status**: This repo is effectively orphaned org infrastructure — alongside `elm-engineer`, `front-end-engineer`, `frontend-recruiting-*`, `sre_challenge`, `engineering-demo-elasticsearch`, `cd3-selenium-tests`, `company-postmortems`, `pwr-cix`, `pwr-cloudhealth`, `pwr-event-proxy-api`, `shared-bi-infrastructure`, and `syndication-playground` — that the org-health summary flagged as "25+ placeholder, interview, and experiment repos cluttering the org." Unlike interview repos, this one carries 11 severe EOL alerts but zero blast radius. A reasonable disposition is archive-in-place: the secrets-scan already protects against accidental key leaks, and nothing depends on the code.
 
 ## API Reference
 
@@ -184,72 +197,3 @@ Derived from git history; current HEAD is `4009845`.
 - **Activity level:** 0 commits in the last 90 days. No commits since 2020-07-08.
 - **Hot spots (last 6 months):** _No commits in the last 6 months — no churn to report._
 - **Recent major changes:** _No major changes in the last 6 months._ (The repo has been effectively dormant since 2016; the only post-2016 activity was the 2020 addition of a secrets-scan workflow.)
-
----
-
-## Revised Summary
-_Revised on 2026-05-12 against commit d98193c_
-
-### Overview
-`remote-control` is an outlier hobby/experiment repo: a React+Redux SPA hosted on GitHub Pages that drives a Particle.io Photon-based battle robot (firmware in `robotCPP/`) by POSTing to named Particle cloud functions. It has no relationship to any PowerReviews/Syndigo production system, no org-internal callers, and has been effectively dormant since 2016 — the only post-2016 change was bolting on the org-standard TruffleHog secrets-scan workflow in 2020 (`f79a2b1`, `4009845`).
-
-### Tech Stack
-| Category | Technology | Version |
-|----------|-----------|---------|
-| Language | JavaScript (ES2015 + stage-0 + JSX) | — |
-| Language | C/C++ (Particle/Arduino firmware) | — |
-| Framework | React / react-redux / Redux / redux-thunk | 0.14 / 4.x / 3.x / 1.x |
-| Framework | Radium (CSS-in-JS) | 0.15.x |
-| Framework | SuperAgent (HTTP client) | 1.x |
-| Build Tool | Webpack 1 + Babel 6 + node-sass 3 | 1.12 / 6.0 / 3.4 |
-| CI/CD | GitHub Actions (TruffleHog secrets scan only) | — |
-| Cloud/Infra | GitHub Pages (gh-pages branch deploy) | — |
-| Cloud/Infra | Particle.io Device Cloud (`api.particle.io/v1`) | v1 |
-
-### Consumers
-| Consumer | Type | How They Use It |
-|----------|------|-----------------|
-| Browser end users | External (humans) | Open `powerreviews.github.io/remote-control` and drive the robot |
-| Particle Photon device(s) | External hardware | Execute UI-triggered cloud functions (`up`/`down`/`left`/`right`/`x`/`start`/`read1`/`read2`/`echo1`/`echo2`) |
-| GitHub Pages | Cloud Service | Static hosting of the compiled bundle |
-| GitHub Actions | CI System | Runs the cron TruffleHog scan |
-| Slack `#github-token-scan` | External | Receives failure notifications from the scan workflow |
-
-### Dependencies on Org Repos
-None — no imports, package deps, submodules, CI references, or shared infrastructure tie this repo to any other org repo. It is one of the few JavaScript repos in the org with a completely empty entry in the org-wide dependency map.
-
-| Repo | Reason |
-|------|--------|
-| _(none)_ | — |
-
-### Upgrade Alerts
-| Dependency | Current Version | Issue | Severity |
-|-----------|----------------|-------|----------|
-| React / react-dom | ^0.14.3 | EOL since 2016; current 19.x; many CVEs only patched in 16+ | Severe |
-| Redux | ^3.0.4 | EOL major (current 5.x) | Severe |
-| react-redux | ^4.0.0 | EOL major (current 9.x) | Severe |
-| redux-thunk | ^1.0.0 | EOL major (current 3.x) | Severe |
-| Webpack / webpack-dev-server | ^1.12.x | EOL since 2017; current 5.x | Severe |
-| Babel (core + es2015/react/stage-0 presets) | ^6.0.15 | EOL; `stage-0` preset removed in Babel 7 | Severe |
-| node-sass | ^3.4.1 | Deprecated in favor of Dart `sass`; 3.x unsupported | Severe |
-| Node.js (per readme) | v5.0.0 | EOL since June 2016 | Severe |
-| SuperAgent | ^1.4.0 | EOL major; older 1.x carries transitive prototype-pollution / regex DoS advisories | Severe |
-| Radium | ^0.15.3 | In maintenance mode since 2017 (FormidableLabs) | Severe |
-
-No CVEs are currently flagged at the repo level, but every framework dependency is multiple majors past EOL — practically, this app cannot be built or audited safely against modern tooling without a wholesale rewrite. Mitigated only by the fact that nothing in production depends on it.
-
-### Coupling Profile
-| Dependency | Protocol | Frequency Pattern | Failure Mode |
-|-----------|----------|-------------------|--------------|
-| Particle.io Device Cloud (`api.particle.io/v1/devices/{id}/{fn}`) | sync HTTP (form-encoded POST via SuperAgent) | per-request (one POST per UI click) | hard — no retry, no circuit breaker; failure surfaces in `responseReducer` and re-enables buttons |
-| Particle Photon firmware (`robotCPP/*.ino`) | indirect via Particle Cloud RPC | per-request | hard — caller observes Particle Cloud's error response |
-| Browser `localStorage` (`token`, `device`, `requestCount`) | shared local store | per-action (writes on `SET_TOKEN`, on every non-`Start` response) | soft — lost storage just resets device/token; user re-enters |
-| GitHub Pages (`gh-pages` branch) | file/object store (manual `npm run gh-pages-auto`) | manual on demand | soft — stale site until next push |
-| TruffleHog GitHub Action | scheduled CI job | scheduled (cron `0 14 * * 1-5`) | soft — failure pings Slack, does not block anything |
-| Slack `#github-token-scan` webhook | sync HTTP webhook (rtCamp/action-slack-notify) | event-triggered (on scan failure only) | soft — notification only |
-
-### Architectural Notes
-- **Shared infrastructure**: None. This is the only repo in the org that integrates with Particle.io (confirmed in the org External Dependency Footprint: `Particle.io` row lists `remote-control` exclusively). It uses no shared Postgres, no shared SNS/SQS topics, no shared Redis, no shared S3 buckets, no shared auth, and no shared deploy tooling (no `pwr-service-deploy-orb`, no `pwr-docker-service`, no Jenkins shared library, no Terraform modules).
-- **Bounded-context overlaps**: None. The repo's domain — robot motor/sensor control — has no overlap with any UGC, reviews, syndication, moderation, sampling, analytics, or merchant-config concept defined elsewhere in the org. Even the `Counter`/`Header`/`Footer`/`Button` React components are isolated; they do not pull from `pwr-js`, `pwr-js-utils`, `design-system`, `react-jsonld`, `ui-library`, or any other shared frontend package.
-- **Architectural evolution**: The codebase has been frozen since 2016-03-04 (`202068f`, "Modify project to use redux devtools chrome extension"). The only post-2016 commits (`f79a2b1`, `4009845`, both 2020-07) added the org-wide TruffleHog + Slack secrets-scan workflow — a pattern this repo shares with ~75 other small/legacy/placeholder repos in the org per the External Dependency Footprint. In other words, the only "evolution" visible here is being swept up in an org-wide security-hygiene pass, not any actual development.
-- **Outlier status**: This repo is effectively orphaned org infrastructure — alongside `elm-engineer`, `front-end-engineer`, `frontend-recruiting-*`, `sre_challenge`, `engineering-demo-elasticsearch`, `cd3-selenium-tests`, `company-postmortems`, `pwr-cix`, `pwr-cloudhealth`, `pwr-event-proxy-api`, `shared-bi-infrastructure`, and `syndication-playground` — that the org-health summary flagged as "25+ placeholder, interview, and experiment repos cluttering the org." Unlike interview repos, this one carries 11 severe EOL alerts but zero blast radius. A reasonable disposition is archive-in-place: the secrets-scan already protects against accidental key leaks, and nothing depends on the code.
